@@ -18,5 +18,5 @@ The playbook was run with command:
 
 ```ansible-playbook -i localhost nginx.yml --extra-vars "version=latest src=80 dst=3000"```
 
-It was tested on a [GCP VM Ubuntu 20] (http://34.90.39.66).
+It was tested on a [GCP VM Ubuntu 20](http://34.90.39.66).
 So if you click on the link (external IP of a VM) you will access to port *80* but redirected to port *3000* with Grafana (Only ports 80 and 433 are open). 
