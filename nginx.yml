@@ -14,12 +14,6 @@
          name: nginx
          state: started
 
-     - name: Create /etc/nginx/conf.d directory
-       ansible.builtin.file:
-         path: /etc/nginx/conf.d
-         state: directory
-         mode: '0644'
-
      - name: Create file with proxy config
        copy:
          dest: "/etc/nginx/nginx.conf"
@@ -36,12 +30,12 @@
 
                 http {
                         server {
-                            listen      80;
-                            listen      [::]:80;
+                            listen      "{{ src }}";
+                            listen      [::]:{{ src }};
                             server_name _;
 
                             location / {
-                               proxy_pass http://localhost:{{ port }};
+                               proxy_pass http://localhost:{{ dst }};
                             }
 
                             error_page 404 /404.html;
